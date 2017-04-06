@@ -13,6 +13,10 @@ var leftPressed = false;
 var upPressed = false;
 var downPressed = false;
 var spacePressed = false;
+var firstRun = 1;
+var tilesize = 32;
+var tileDrawSize = 64;
+var map;
 
 window.addEventListener("keydown", function(e) { // prevent key scrolling
     // space and arrow keys
@@ -35,6 +39,10 @@ function draw() {
 }
 
 function main() {
+    if (firstRun) {
+      load();
+      firstRun = 0;
+    }
     draw();
     update();
 }

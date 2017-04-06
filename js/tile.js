@@ -1,10 +1,6 @@
 var tiles = new Image();
 tiles.src = "assets/tiles.png";
 
-var tilesize = 32;
-var tileDrawSize = 64;
-var map = 1;
-
 function Tile() {
     this.x = 0;
     this.y = 0;
@@ -14,5 +10,5 @@ function Tile() {
 }
 
 Tile.prototype.draw = function(ctx) {
-    ctx.drawImage(tiles, xType * tilesize, yType * tilesize, tilesize, tilesize, toX * tileDrawSize, toY * tileDrawSize, tileDrawSize, tileDrawSize);
+    ctx.drawImage(tiles, this.xType * tilesize, this.yType * tilesize, tilesize, tilesize, this.x * tileDrawSize, this.y * tileDrawSize, tileDrawSize, tileDrawSize);
 }
