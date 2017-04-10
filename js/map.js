@@ -17,7 +17,7 @@ function drawMap(map) {
     }
 
     var fgTileArray = [];
-    for (i = 0; i < 13; i++) {
+    for (i = 0; i < 13; i++) { // Make Foreground Border Tiles
         for (j = 0; j < 13; j++) {
             if (i == 0 || i == 12 || j == 0 || j == 12) {
                 var newTile = new Tile();
@@ -31,7 +31,7 @@ function drawMap(map) {
             }
         }
     }
-    switch (pattern) {
+    switch (pattern) { // Make Foreground Inside Tiles
         case 0:
         fgTileArray = makeTileBox(2, 2, 2, 4, fgTileArray);
         fgTileArray = makeTileBox(5, 2, 3, 4, fgTileArray);
@@ -58,17 +58,27 @@ function drawMap(map) {
         fgTileArray = makeTileBox(10, 6, 1, 5, fgTileArray);
             break;
         case 3:
-        fgTileArray = makeTileBox(5, 5, 1, 1, fgTileArray);
+        fgTileArray = makeTileBox(2, 2, 2, 2, fgTileArray);
+        fgTileArray = makeTileBox(2, 5, 2, 6, fgTileArray);
+        fgTileArray = makeTileBox(5, 2, 3, 4, fgTileArray);
+        fgTileArray = makeTileBox(5, 7, 3, 4, fgTileArray);
+        fgTileArray = makeTileBox(9, 2, 2, 6, fgTileArray);
+        fgTileArray = makeTileBox(9, 9, 2, 2, fgTileArray);
             break;
         case 4:
-        fgTileArray = makeTileBox(3, 3, 3, 3, fgTileArray);
+        fgTileArray = makeTileBox(2, 2, 2, 4, fgTileArray);
+        fgTileArray = makeTileBox(2, 7, 2, 4, fgTileArray);
+        fgTileArray = makeTileBox(5, 2, 3, 2, fgTileArray);
+        fgTileArray = makeTileBox(5, 5, 3, 3, fgTileArray);
+        fgTileArray = makeTileBox(5, 9, 3, 2, fgTileArray);
+        fgTileArray = makeTileBox(9, 2, 2, 4, fgTileArray);
+        fgTileArray = makeTileBox(9, 7, 2, 4, fgTileArray);
             break;
         default:
         fgTileArray = makeTileBox(2, 2, 9, 9, fgTileArray);
-
     }
 
-    for (i = 0; i < fgTileArray.length; i++) { // Draw Foreground Tiles
+    for (i = 0; i < fgTileArray.length; i++) { // Draw All Foreground Tiles
         fgTileArray[i].draw(ctx);
     }
 }
