@@ -36,6 +36,7 @@ function update() {
 function draw() {
     clearCanvas();
     drawMap(map);
+    drawPlayers();
 }
 
 function main() {
