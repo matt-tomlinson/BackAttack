@@ -36,9 +36,9 @@ function makePlayers() {
 
 
     madePlayers = makePlayer(1, 1, 0, 0, 0, madePlayers);
-    madePlayers = makePlayer(11, 1, 1, 0, 0, madePlayers);
-    madePlayers = makePlayer(1, 11, 2, 0, 0, madePlayers);
-    madePlayers = makePlayer(11, 11, 3, 0, 0, madePlayers);
+    //madePlayers = makePlayer(11, 1, 1, 0, 0, madePlayers);
+    //madePlayers = makePlayer(1, 11, 2, 0, 0, madePlayers);
+    //madePlayers = makePlayer(11, 11, 3, 0, 0, madePlayers);
 
     return madePlayers;
 }
