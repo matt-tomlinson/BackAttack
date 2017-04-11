@@ -30,7 +30,7 @@ function clearCanvas() {
 }
 
 function update() {
-
+    updatePlayers();
 }
 
 function draw() {
@@ -40,10 +40,7 @@ function draw() {
 }
 
 function main() {
-    if (firstRun) {
-      load();
-      firstRun = 0;
-    }
+    load();
     draw();
     update();
 }
