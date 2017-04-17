@@ -4,6 +4,8 @@ function Player() {
     this.dy = 0;
     this.dx = 0;
     this.ai = 0;
+    this.width = 64;
+    this.height = 64;
     this.color = 0; // 0 RED, 1 BLUE, 2 ORANGE, 3 GREEN
     this.count = 0;
     this.speed = 0.06;
@@ -79,16 +81,22 @@ function makePlayer(x, y, color, ai, facing, madePlayers) {
 function makePlayers() {
     //                       x, y, color, ai, facing
     madePlayers = makePlayer(1, 1, 0, 0, 3, madePlayers);
-    madePlayers = makePlayer(11, 1, 1, 1, 0, madePlayers);
-    //madePlayers = makePlayer(1, 11, 2, 0, 0, madePlayers);
-    //madePlayers = makePlayer(11, 11, 3, 0, 0, madePlayers);
+    madePlayers = makePlayer(11, 1, 1, 0, 1, madePlayers);
+    madePlayers = makePlayer(1, 11, 2, 0, 0, madePlayers);
+    madePlayers = makePlayer(11, 11, 3, 0, 2, madePlayers);
 
     return madePlayers;
 }
 
-function drawPlayers() {
+function drawPlayers(grid) {
     for (i = 0; i < players.length; i++) {
         players[i].draw(ctx);
+        for (j = 0; j < grid.length; j++) {
+            var block = grid[j];
+            if (block.collide != 0) {
+                var dir = colCheck(players[i], block);
+            }
+        }
     }
 }
 

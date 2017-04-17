@@ -13,8 +13,8 @@ function mapY(yCoord) {
 
 function colCheck(shapeA, shapeB) {
     // get the vectors to check against
-    var vX = (shapeA.x + (shapeA.width / 2)) - (shapeB.x + (shapeB.width / 2)),
-        vY = (shapeA.y + (shapeA.height / 2)) - (shapeB.y + (shapeB.height / 2)),
+    var vX = (shapeA.x * 64 + (shapeA.width / 2)) - (shapeB.x * 64 + (shapeB.width / 2)),
+        vY = (shapeA.y * 64 + (shapeA.height / 2)) - (shapeB.y * 64 + (shapeB.height / 2)),
         // add the half widths and half heights of the objects
         hWidths = (shapeA.width / 2) + (shapeB.width / 2),
         hHeights = (shapeA.height / 2) + (shapeB.height / 2),
@@ -28,18 +28,18 @@ function colCheck(shapeA, shapeB) {
         if (oX >= oY) {
             if (vY > 0) {
                 colDir = "t";
-                shapeA.y += oY;
+                shapeA.y += oY / 64;
             } else {
                 colDir = "b";
-                shapeA.y -= oY;
+                shapeA.y -= oY / 64;
             }
         } else {
             if (vX > 0) {
                 colDir = "l";
-                shapeA.x += oX;
+                shapeA.x += oX / 64;
             } else {
                 colDir = "r";
-                shapeA.x -= oX;
+                shapeA.x -= oX / 64;
             }
         }
     }

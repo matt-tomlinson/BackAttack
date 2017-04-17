@@ -81,6 +81,8 @@ function drawMap(map) {
     for (i = 0; i < fgTileArray.length; i++) { // Draw All Foreground Tiles
         fgTileArray[i].draw(ctx);
     }
+
+    return fgTileArray;
 }
 
 function makeTileBox(x, y, width, height, tileArray) {

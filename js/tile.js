@@ -4,6 +4,8 @@ tiles.src = "assets/tiles.png";
 function Tile() {
     this.x = 0;
     this.y = 0;
+    this.width = 64;
+    this.height = 64;
     this.collide = 1;
     this.xType = 0;
     this.yType = 0;
