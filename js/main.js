@@ -31,12 +31,14 @@ function clearCanvas() {
 
 function update() {
     updatePlayers();
+    updateBombs();
 }
 
 function draw() {
     clearCanvas();
     fgTileArray = drawMap(map);
     drawPlayers(fgTileArray);
+    drawBombs();
 }
 
 function main() {

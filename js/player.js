@@ -66,6 +66,10 @@ Player.prototype.update = function(ctx) {
         } else if (upPressed) {
             this.nextDir = 0;
         }
+        if (spacePressed) {
+            makeBomb(this.x + 1, this.y, 0.13, 0, madeBombs);
+            spacePressed = false;
+        }
     } else {
 
     }
