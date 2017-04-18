@@ -6,6 +6,7 @@ function Player() {
     this.ai = 0;
     this.width = 64;
     this.height = 64;
+    this.nextDir = 1; // 0 UP, 1 DOWN, 2 LEFT, 3 RIGHT
     this.color = 0; // 0 RED, 1 BLUE, 2 ORANGE, 3 GREEN
     this.count = 0;
     this.speed = 0.06;
@@ -36,23 +37,35 @@ Player.prototype.draw = function(ctx) {
 
 Player.prototype.update = function(ctx) {
     if (!this.ai) {
-        if (rightPressed) {
+        if (this.facing == 3) {
+            this.dy = 0;
             this.dx = this.speed;
-            this.facing = 3;
-        } else if (leftPressed) {
+
+        } else if (this.facing == 2) {
+            this.dy = 0;
             this.dx = -this.speed;
-            this.facing = 2;
-        } else if (downPressed) {
+
+        } else if (this.facing == 1) {
+            this.dx = 0;
             this.dy = this.speed;
-            this.facing = 1;
-        } else if (upPressed) {
+
+        } else if (this.facing == 0) {
+            this.dx = 0;
             this.dy = -this.speed;
-            this.facing = 0;
+
         } else {
             this.dx = 0;
             this.dy = 0;
         }
-
+        if (rightPressed) {
+            this.nextDir = 3;
+        } else if (leftPressed) {
+            this.nextDir = 2;
+        } else if (downPressed) {
+            this.nextDir = 1;
+        } else if (upPressed) {
+            this.nextDir = 0;
+        }
     } else {
 
     }
@@ -81,9 +94,9 @@ function makePlayer(x, y, color, ai, facing, madePlayers) {
 function makePlayers() {
     //                       x, y, color, ai, facing
     madePlayers = makePlayer(1, 1, 0, 0, 3, madePlayers);
-    madePlayers = makePlayer(11, 1, 1, 0, 1, madePlayers);
+    //madePlayers = makePlayer(11, 1, 1, 0, 1, madePlayers);
     madePlayers = makePlayer(1, 11, 2, 0, 0, madePlayers);
-    madePlayers = makePlayer(11, 11, 3, 0, 2, madePlayers);
+    //madePlayers = makePlayer(11, 11, 3, 0, 2, madePlayers);
 
     return madePlayers;
 }
@@ -93,8 +106,15 @@ function drawPlayers(grid) {
         players[i].draw(ctx);
         for (j = 0; j < grid.length; j++) {
             var block = grid[j];
-            if (block.collide != 0) {
+            if (block.collide) {
                 var dir = colCheck(players[i], block);
+                if (dir) {
+                    if (players[i].facing == players[i].nextDir) {
+                        players[i].facing = random(0, 4);
+                    } else {
+                        players[i].facing = players[i].nextDir;
+                    }
+                }
             }
         }
     }
