@@ -36,27 +36,28 @@ Player.prototype.draw = function(ctx) {
 }
 
 Player.prototype.update = function(ctx) {
+
+    if (this.facing == 3) {
+        this.dy = 0;
+        this.dx = this.speed;
+
+    } else if (this.facing == 2) {
+        this.dy = 0;
+        this.dx = -this.speed;
+
+    } else if (this.facing == 1) {
+        this.dx = 0;
+        this.dy = this.speed;
+
+    } else if (this.facing == 0) {
+        this.dx = 0;
+        this.dy = -this.speed;
+
+    } else {
+        this.dx = 0;
+        this.dy = 0;
+    }
     if (!this.ai) {
-        if (this.facing == 3) {
-            this.dy = 0;
-            this.dx = this.speed;
-
-        } else if (this.facing == 2) {
-            this.dy = 0;
-            this.dx = -this.speed;
-
-        } else if (this.facing == 1) {
-            this.dx = 0;
-            this.dy = this.speed;
-
-        } else if (this.facing == 0) {
-            this.dx = 0;
-            this.dy = -this.speed;
-
-        } else {
-            this.dx = 0;
-            this.dy = 0;
-        }
         if (rightPressed) {
             this.nextDir = 3;
         } else if (leftPressed) {
@@ -69,16 +70,16 @@ Player.prototype.update = function(ctx) {
         if (spacePressed) {
             switch (this.facing) { // Make Foreground Inside Tiles
                 case 0:
-                    makeBomb(this.x, this.y, 0, -0.13, madeBombs);
+                    makeBomb(this.x, this.y - 1, 0, -0.13, madeBombs);
                     break;
                 case 1:
-                    makeBomb(this.x, this.y, 0, 0.13, madeBombs);
+                    makeBomb(this.x, this.y + 1, 0, 0.13, madeBombs);
                     break;
                 case 2:
-                    makeBomb(this.x, this.y, -0.13, 0, madeBombs);
+                    makeBomb(this.x - 1, this.y, -0.13, 0, madeBombs);
                     break;
                 case 3:
-                    makeBomb(this.x, this.y, 0.13, 0, madeBombs);
+                    makeBomb(this.x + 1, this.y, 0.13, 0, madeBombs);
                     break;
                 default:
             }
@@ -112,29 +113,16 @@ function makePlayer(x, y, color, ai, facing, madePlayers) {
 function makePlayers() {
     //                       x, y, color, ai, facing
     madePlayers = makePlayer(1, 1, 0, 0, 3, madePlayers);
-    //madePlayers = makePlayer(11, 1, 1, 0, 1, madePlayers);
-    madePlayers = makePlayer(1, 11, 2, 0, 0, madePlayers);
-    //madePlayers = makePlayer(11, 11, 3, 0, 2, madePlayers);
+    madePlayers = makePlayer(11, 1, 1, 1, 1, madePlayers);
+    madePlayers = makePlayer(1, 11, 2, 1, 0, madePlayers);
+    madePlayers = makePlayer(11, 11, 3, 1, 2, madePlayers);
 
     return madePlayers;
 }
 
-function drawPlayers(grid) {
+function drawPlayers() {
     for (i = 0; i < players.length; i++) {
         players[i].draw(ctx);
-        for (j = 0; j < grid.length; j++) {
-            var block = grid[j];
-            if (block.collide) {
-                var dir = colCheck(players[i], block);
-                if (dir) {
-                    if (players[i].facing == players[i].nextDir) {
-                        players[i].facing = random(0, 4);
-                    } else {
-                        players[i].facing = players[i].nextDir;
-                    }
-                }
-            }
-        }
     }
 }
 

@@ -38,7 +38,8 @@ function draw() {
     clearCanvas();
     fgTileArray = drawMap(map);
     drawBombs();
-    drawPlayers(fgTileArray);
+    drawPlayers();
+    collisionResolution(fgTileArray, madeBombs);
 }
 
 function main() {
