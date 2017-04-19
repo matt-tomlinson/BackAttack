@@ -37,8 +37,8 @@ function update() {
 function draw() {
     clearCanvas();
     fgTileArray = drawMap(map);
-    drawPlayers(fgTileArray);
     drawBombs();
+    drawPlayers(fgTileArray);
 }
 
 function main() {

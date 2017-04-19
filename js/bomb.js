@@ -6,9 +6,9 @@ function Bomb() {
     this.width = 64;
     this.height = 64;
     this.count = 0;
-    this.speed = 0.01;
+    this.speed = 0.13;
     this.frameCount = 0;
-    this.animateSpeed = 10;
+    this.animateSpeed = 5;
 }
 
 Bomb.prototype.draw = function(ctx) {
@@ -64,6 +64,11 @@ function drawBombs() {
                 }
             }
         }*/
+        if (madeBombs[i].x > width/64 || madeBombs[i].x < 0 || madeBombs[i].y > height/64 || madeBombs[i].y < 0) {
+          if (madeBombs.indexOf(madeBombs[i]) > -1){
+            madeBombs.splice(madeBombs.indexOf(madeBombs[i]), 1);
+          }
+        }
     }
 }
 

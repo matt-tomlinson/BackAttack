@@ -67,7 +67,21 @@ Player.prototype.update = function(ctx) {
             this.nextDir = 0;
         }
         if (spacePressed) {
-            makeBomb(this.x + 1, this.y, 0.13, 0, madeBombs);
+            switch (this.facing) { // Make Foreground Inside Tiles
+                case 0:
+                    makeBomb(this.x, this.y, 0, -0.13, madeBombs);
+                    break;
+                case 1:
+                    makeBomb(this.x, this.y, 0, 0.13, madeBombs);
+                    break;
+                case 2:
+                    makeBomb(this.x, this.y, -0.13, 0, madeBombs);
+                    break;
+                case 3:
+                    makeBomb(this.x, this.y, 0.13, 0, madeBombs);
+                    break;
+                default:
+            }
             spacePressed = false;
         }
     } else {
