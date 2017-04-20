@@ -3,8 +3,8 @@ function Bomb() {
     this.y = 1;
     this.dy = 0;
     this.dx = 0;
-    this.width = 64;
-    this.height = 64;
+    this.width = 32;
+    this.height = 32;
     this.count = 0;
     this.speed = 0.13;
     this.frameCount = 0;
@@ -13,9 +13,9 @@ function Bomb() {
 
 Bomb.prototype.draw = function(ctx) {
     if (this.frameCount % 2) {
-        ctx.drawImage(tiles, 160, 4 * tilesize, tilesize, tilesize, this.x * tileDrawSize, this.y * tileDrawSize, tileDrawSize, tileDrawSize);
+        ctx.drawImage(tiles, 160, 4 * tilesize, 16, 16, this.x * tileDrawSize, this.y * tileDrawSize, 32, 32);
     } else {
-        ctx.drawImage(tiles, 160 + tilesize, 4 * tilesize, tilesize, tilesize, this.x * tileDrawSize, this.y * tileDrawSize, tileDrawSize, tileDrawSize);
+        ctx.drawImage(tiles, 160 + tilesize / 2, 4 * tilesize, 16, 16, this.x * tileDrawSize, this.y * tileDrawSize, 32, 32);
     }
     this.count++;
 
@@ -51,24 +51,6 @@ function makeBomb(x, y, dx, dy, madeBombs) {
 function drawBombs() {
     for (i = 0; i < madeBombs.length; i++) {
         madeBombs[i].draw(ctx);
-        /*for (j = 0; j < grid.length; j++) {
-            var block = grid[j];
-            if (block.collide) {
-                var dir = colCheck(players[i], block);
-                if (dir) {
-                    if (players[i].facing == players[i].nextDir) {
-                        players[i].facing = random(0, 4);
-                    } else {
-                        players[i].facing = players[i].nextDir;
-                    }
-                }
-            }
-        }*/
-        if (madeBombs[i].x > width/64 || madeBombs[i].x < 0 || madeBombs[i].y > height/64 || madeBombs[i].y < 0) {
-          if (madeBombs.indexOf(madeBombs[i]) > -1){
-            madeBombs.splice(madeBombs.indexOf(madeBombs[i]), 1);
-          }
-        }
     }
 }
 

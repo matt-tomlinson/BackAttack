@@ -68,18 +68,18 @@ Player.prototype.update = function(ctx) {
             this.nextDir = 0;
         }
         if (spacePressed) {
-            switch (this.facing) { // Make Foreground Inside Tiles
+            switch (this.facing) {
                 case 0:
-                    makeBomb(this.x, this.y - 1, 0, -0.13, madeBombs);
+                    makeBomb(this.x + 0.25, this.y - 0.5, 0, -0.13, madeBombs);
                     break;
                 case 1:
-                    makeBomb(this.x, this.y + 1, 0, 0.13, madeBombs);
+                    makeBomb(this.x + 0.25, this.y + 1, 0, 0.13, madeBombs);
                     break;
                 case 2:
-                    makeBomb(this.x - 1, this.y, -0.13, 0, madeBombs);
+                    makeBomb(this.x - 0.5, this.y + 0.25, -0.13, 0, madeBombs);
                     break;
                 case 3:
-                    makeBomb(this.x + 1, this.y, 0.13, 0, madeBombs);
+                    makeBomb(this.x + 1, this.y + 0.25, 0.13, 0, madeBombs);
                     break;
                 default:
             }
