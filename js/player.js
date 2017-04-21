@@ -20,9 +20,9 @@ var players = [];
 
 Player.prototype.draw = function(ctx) {
     if (this.frameCount % 2) {
-        ctx.drawImage(tiles, 160 + (this.facing * tilesize * 2), this.color * tilesize, tilesize, tilesize, this.x * tileDrawSize, this.y * tileDrawSize, tileDrawSize, tileDrawSize);
-    } else {
         ctx.drawImage(tiles, 160 + (this.facing * tilesize * 2 + tilesize), this.color * tilesize, tilesize, tilesize, this.x * tileDrawSize, this.y * tileDrawSize, tileDrawSize, tileDrawSize);
+    } else {
+        ctx.drawImage(tiles, 160 + (this.facing * tilesize * 2), this.color * tilesize, tilesize, tilesize, this.x * tileDrawSize, this.y * tileDrawSize, tileDrawSize, tileDrawSize);
     }
     this.count++;
 

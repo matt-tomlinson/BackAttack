@@ -32,6 +32,7 @@ function clearCanvas() {
 function update() {
     updatePlayers();
     updateBombs();
+    updateAnimations();
 }
 
 function draw() {
@@ -39,6 +40,7 @@ function draw() {
     fgTileArray = drawMap(map);
     drawBombs();
     drawPlayers();
+    drawAnimations();
     collisionResolution(fgTileArray, madeBombs);
 }
 
