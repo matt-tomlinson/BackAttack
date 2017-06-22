@@ -4,13 +4,17 @@ function Player() {
     this.dy = 0;
     this.dx = 0;
     this.ai = 0;
-    this.width = 64;
-    this.height = 64;
-    this.nextDir = 1; // 0 UP, 1 DOWN, 2 LEFT, 3 RIGHT
     this.color = 0; // 0 RED, 1 BLUE, 2 ORANGE, 3 GREEN
     this.count = 0;
     this.speed = 0.06;
+    this.width = 64;
+    this.height = 64;
+    this.nextDir = 1; // 0 UP, 1 DOWN, 2 LEFT, 3 RIGHT
     this.facing = 0; // 0 UP, 1 DOWN, 2 LEFT, 3 RIGHT
+    this.upOpen = 0;
+    this.downOpen = 0;
+    this.leftOpen = 0;
+    this.rightOpen = 0;
     this.frameCount = 0;
     this.animateSpeed = 3;
 }
@@ -57,6 +61,7 @@ Player.prototype.update = function(ctx) {
         this.dx = 0;
         this.dy = 0;
     }
+
     if (!this.ai) {
         if (rightPressed) {
             this.nextDir = 3;

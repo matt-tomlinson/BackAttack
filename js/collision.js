@@ -3,6 +3,8 @@ function collisionResolution(grid, bombList) {
         for (j = 0; j < grid.length; j++) {
             var block = grid[j];
             if (block.collide) {
+                /*if (block.collide && ((players[i].x - 1 <= block.x) && (block.x <= players[i].x + 2) &&
+                          (players[i].y - 1 <= block.y) && (block.y <= players[i].y + 2))) {*/
                 var dir0 = colCheck(players[i], block); // player vs grid collision
                 if (dir0) {
                     if (players[i].facing == players[i].nextDir) {

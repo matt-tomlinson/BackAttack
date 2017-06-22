@@ -5,18 +5,18 @@ ctx.webkitImageSmoothingEnabled = false;
 ctx.mozImageSmoothingEnabled = false;
 ctx.imageSmoothingEnabled = false;
 
-var width = canvas.width; //= window.innerWidth;
-var height = canvas.height; //= window.innerHeight;
-var fps = 60;
-var rightPressed = false;
-var leftPressed = false;
-var upPressed = false;
-var downPressed = false;
-var spacePressed = false;
-var firstRun = 1;
-var tilesize = 32;
-var tileDrawSize = 64;
-var map;
+var width = canvas.width, //= window.innerWidth;
+    height = canvas.height, //= window.innerHeight;
+    fps = 60,
+    rightPressed = false,
+    leftPressed = false,
+    upPressed = false,
+    downPressed = false,
+    spacePressed = false,
+    firstRun = 1,
+    tilesize = 32,
+    tileDrawSize = 64,
+    map;
 
 window.addEventListener("keydown", function(e) { // prevent key scrolling
     // space and arrow keys
@@ -37,7 +37,7 @@ function update() {
 
 function draw() {
     clearCanvas();
-    fgTileArray = drawMap(map);
+    drawMap();
     drawBombs();
     drawPlayers();
     drawAnimations();
