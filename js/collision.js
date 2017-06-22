@@ -1,7 +1,7 @@
-function collisionResolution(grid, bombList) {
+function collisionResolution() {
     for (i = 0; i < players.length; i++) {
-        for (j = 0; j < grid.length; j++) {
-            var block = grid[j];
+        for (j = 0; j < fgTileArray.length; j++) {
+            var block = fgTileArray[j];
             if (block.collide) {
                 /*if (block.collide && ((players[i].x - 1 <= block.x) && (block.x <= players[i].x + 2) &&
                           (players[i].y - 1 <= block.y) && (block.y <= players[i].y + 2))) {*/
@@ -15,8 +15,8 @@ function collisionResolution(grid, bombList) {
                 }
             }
         }
-        for (k = 0; k < bombList.length; k++) {
-            var bomb = bombList[k];
+        for (k = 0; k < madeBombs.length; k++) {
+            var bomb = madeBombs[k];
             var player = players[i];
             if (bomb && player) {
                 var dir1 = colCheck(players[i], bomb); // player vs bomb collision
@@ -49,8 +49,8 @@ function collisionResolution(grid, bombList) {
                         break;
                     default:
                 }
-                if (bombList.indexOf(bombList[k]) > -1) { // remove bomb
-                    bombList.splice(bombList.indexOf(bombList[k]), 1);
+                if (madeBombs.indexOf(madeBombs[k]) > -1) { // remove bomb
+                    madeBombs.splice(madeBombs.indexOf(madeBombs[k]), 1);
                 }
             }
         }
@@ -85,15 +85,15 @@ function collisionResolution(grid, bombList) {
             }
         }
     }
-    for (k = 0; k < bombList.length; k++) {
-        for (j = 0; j < grid.length; j++) {
-            var bomb = bombList[k];
+    for (k = 0; k < madeBombs.length; k++) {
+        for (j = 0; j < fgTileArray.length; j++) {
+            var bomb = madeBombs[k];
             if (bomb) {
-                var dir3 = colCheck(bombList[k], grid[j]); // bomb vs grid collision
+                var dir3 = colCheck(madeBombs[k], fgTileArray[j]); // bomb vs grid collision
             }
             if (dir3) {
-                if (bombList.indexOf(bombList[k]) > -1) {
-                    bombList.splice(bombList.indexOf(bombList[k]), 1);
+                if (madeBombs.indexOf(madeBombs[k]) > -1) {
+                    madeBombs.splice(madeBombs.indexOf(madeBombs[k]), 1);
                 }
             }
         }

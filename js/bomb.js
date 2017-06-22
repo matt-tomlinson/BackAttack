@@ -1,3 +1,5 @@
+var madeBombs = [];
+
 function Bomb() {
     this.x = 1;
     this.y = 1;
@@ -32,8 +34,6 @@ Bomb.prototype.update = function(ctx) {
     this.x += this.dx;
     this.y += this.dy;
 }
-
-var madeBombs = [];
 
 function makeBomb(x, y, dx, dy, madeBombs) {
     var newBomb = new Bomb();

@@ -41,7 +41,7 @@ function draw() {
     drawBombs();
     drawPlayers();
     drawAnimations();
-    collisionResolution(fgTileArray, madeBombs);
+    collisionResolution();
 }
 
 function main() {
