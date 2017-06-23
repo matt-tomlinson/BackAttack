@@ -76,6 +76,8 @@ function makeMap(map, pattern) {
         default:
             makeTileBox(2, 2, 9, 9, map);
     }
+
+    makeTurnPoints(pattern);
 }
 
 function drawMap() {
