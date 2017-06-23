@@ -7,7 +7,7 @@ ctx.imageSmoothingEnabled = false;
 
 var width = canvas.width, //= window.innerWidth;
     height = canvas.height, //= window.innerHeight;
-    fps = 60,
+    fps = 80,
     rightPressed = false,
     leftPressed = false,
     upPressed = false,
@@ -25,23 +25,23 @@ window.addEventListener("keydown", function(e) { // prevent key scrolling
     }
 }, false);
 
-function clearCanvas() {
+function clear() {
     ctx.clearRect(0, 0, width, height);
+}
+
+function draw() {
+    clear();
+    drawMap();
+    drawBombs();
+    drawPlayers();
+    drawAnimations();
+    collisionResolution();
 }
 
 function update() {
     updatePlayers();
     updateBombs();
     updateAnimations();
-}
-
-function draw() {
-    clearCanvas();
-    drawMap();
-    drawBombs();
-    drawPlayers();
-    drawAnimations();
-    collisionResolution();
 }
 
 function main() {

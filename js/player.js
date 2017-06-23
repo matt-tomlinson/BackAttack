@@ -6,7 +6,7 @@ function Player() {
     this.ai = 0;
     this.color = 0; // 0 RED, 1 BLUE, 2 ORANGE, 3 GREEN
     this.count = 0;
-    this.speed = 0.06;
+    this.speed = 0.05;
     this.width = 64;
     this.height = 64;
     this.nextDir = 1; // 0 UP, 1 DOWN, 2 LEFT, 3 RIGHT
@@ -90,9 +90,10 @@ Player.prototype.update = function(ctx) {
             }
             spacePressed = false;
         }
-    } else {
-
     }
+
+
+
     if (this.dy == 0) {
         this.x += this.dx;
     }
@@ -118,9 +119,9 @@ function makePlayer(x, y, color, ai, facing, madePlayers) {
 function makePlayers() {
     //                       x, y, color, ai, facing
     madePlayers = makePlayer(1, 1, 0, 0, 3, madePlayers);
-    madePlayers = makePlayer(11, 1, 1, 1, 1, madePlayers);
-    madePlayers = makePlayer(1, 11, 2, 1, 0, madePlayers);
-    madePlayers = makePlayer(11, 11, 3, 1, 2, madePlayers);
+    //madePlayers = makePlayer(11, 1, 1, 1, 1, madePlayers);
+    //madePlayers = makePlayer(1, 11, 2, 1, 0, madePlayers);
+    //madePlayers = makePlayer(11, 11, 3, 1, 2, madePlayers);
 
     return madePlayers;
 }

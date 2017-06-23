@@ -8,7 +8,7 @@ function Bomb() {
     this.width = 32;
     this.height = 32;
     this.count = 0;
-    this.speed = 0.13;
+    this.speed = 0.05;
     this.frameCount = 0;
     this.animateSpeed = 5;
 }

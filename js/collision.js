@@ -2,10 +2,12 @@ function collisionResolution() {
     for (i = 0; i < players.length; i++) {
         for (j = 0; j < fgTileArray.length; j++) {
             var block = fgTileArray[j];
-            if (block.collide) {
+            if (block.collide && ((players[i].x - 1 <= block.x) && (block.x <= players[i].x + 1) &&
+                          (players[i].y - 1 <= block.y) && (block.y <= players[i].y + 1))) {
                 /*if (block.collide && ((players[i].x - 1 <= block.x) && (block.x <= players[i].x + 2) &&
                           (players[i].y - 1 <= block.y) && (block.y <= players[i].y + 2))) {*/
                 var dir0 = colCheck(players[i], block); // player vs grid collision
+                //block.xType = 1; see nearby blocks
                 if (dir0) {
                     if (players[i].facing == players[i].nextDir) {
                         players[i].facing = random(0, 4);

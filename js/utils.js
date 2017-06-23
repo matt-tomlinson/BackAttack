@@ -3,14 +3,6 @@ function random(min, max) {
     return num;
 }
 
-function mapX(xCoord) {
-    return tilesize * xCoord;
-}
-
-function mapY(yCoord) {
-    return height - (yCoord * tilesize);
-}
-
 function colCheck(shapeA, shapeB) {
     // get the vectors to check against
     var vX = (shapeA.x * 64 + (shapeA.width / 2)) - (shapeB.x * 64 + (shapeB.width / 2)),
