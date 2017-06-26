@@ -32,13 +32,13 @@ function collisionResolution() {
                 }
             }
         }
-        /*for (j = 0; j < fgTileArray.length; j++) {
+        for (j = 0; j < fgTileArray.length; j++) {
             var block = fgTileArray[j];
             if (block.collide && ((players[i].x - 1 <= block.x) && (block.x <= players[i].x + 1) &&
                     (players[i].y - 1 <= block.y) && (block.y <= players[i].y + 1))) {
                 /*if (block.collide && ((players[i].x - 1 <= block.x) && (block.x <= players[i].x + 2) &&
                           (players[i].y - 1 <= block.y) && (block.y <= players[i].y + 2))) {*/
-        /*var dir0 = colCheck(players[i], block); // player vs grid collision
+                var dir0 = colCheck(players[i], block); // player vs grid collision
                 //block.xType = 1; see nearby blocks
                 if (dir0) {
                     if (players[i].facing == players[i].nextDir) {
@@ -48,7 +48,7 @@ function collisionResolution() {
                     }
                 }
             }
-        }*/
+        }
         for (k = 0; k < madeBombs.length; k++) {
             var bomb = madeBombs[k];
             var player = players[i];
