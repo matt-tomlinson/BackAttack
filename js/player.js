@@ -90,15 +90,17 @@ Player.prototype.update = function(ctx) {
             }
             spacePressed = false;
         }
+    } else { // AI
+        this.nextDir = random(0,4);
     }
-
-
 
     if (this.dy == 0) {
         this.x += this.dx;
+        this.x = Math.round(this.x * 100) / 100;
     }
     if (this.dx == 0) {
         this.y += this.dy;
+        this.y = Math.round(this.y * 100) / 100;
     }
 }
 
@@ -119,9 +121,9 @@ function makePlayer(x, y, color, ai, facing, madePlayers) {
 function makePlayers() {
     //                       x, y, color, ai, facing
     madePlayers = makePlayer(1, 1, 0, 0, 3, madePlayers);
-    //madePlayers = makePlayer(11, 1, 1, 1, 1, madePlayers);
-    //madePlayers = makePlayer(1, 11, 2, 1, 0, madePlayers);
-    //madePlayers = makePlayer(11, 11, 3, 1, 2, madePlayers);
+    madePlayers = makePlayer(11, 1, 1, 1, 1, madePlayers);
+    madePlayers = makePlayer(1, 11, 2, 1, 0, madePlayers);
+    madePlayers = makePlayer(11, 11, 3, 1, 2, madePlayers);
 
     return madePlayers;
 }
